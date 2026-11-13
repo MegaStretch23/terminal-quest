@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terminal Quest: learn Linux and PowerShell commands by playing</title>
+<meta name="description" content="A free browser game with 12 levels that teaches command-line basics: pwd, ls, cd, cat, mkdir, cp, mv, rm, grep, find and pipes. Linux and PowerShell modes. Nothing to install; it never touches your real files.">
+<style>
+  :root { color-scheme: dark; --bg:#0d1117; --panel:#161b22; --line:#30363d; --fg:#e6edf3; --dim:#8b949e; --green:#3fb950; --amber:#d29922; --red:#f85149; --blue:#58a6ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  header { padding:14px 18px; border-bottom:1px solid var(--line); display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; }
+  h1 { margin:0; font-size:18px; }
+  main { display:grid; grid-template-columns: 330px 1fr; gap:14px; padding:14px 18px; max-width:1150px; margin:0 auto; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; }
+  .panel h2 { margin:0 0 4px; font-size:16px; }
+  .meta { color:var(--dim); font-size:13px; margin-bottom:8px; }
+  .task { border-left:3px solid var(--amber); padding:4px 10px; margin:10px 0; background:#1c2128; }
+  .bar { height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin:8px 0 12px; }
+  .bar i { display:block; height:100%; background:var(--green); width:0; transition:width .3s; }
+  button { background:#21262d; color:var(--fg); border:1px solid var(--line); border-radius:6px; padding:6px 12px; cursor:pointer; font:inherit; font-size:13px; }
+  button:hover { border-color:var(--dim); }
+  button[aria-pressed="true"] { background:#1f6feb; border-color:#1f6feb; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; }
+  #term { background:#010409; border:1px solid var(--line); border-radius:8px; height:480px; overflow-y:auto; padding:12px; font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; }
+  #term .err { color:var(--red); } #term .ok { color:var(--green); } #term .sys { color:var(--blue); } #term .cmd { color:var(--dim); }
+  form { display:flex; align-items:center; gap:8px; margin-top:8px; background:#010409; border:1px solid var(--line); border-radius:8px; padding:6px 10px; font:14px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  #prompt { color:var(--green); white-space:nowrap; }
+  #cmd { flex:1; min-width:60px; background:transparent; border:0; color:var(--fg); font:inherit; outline:none; }
+  footer { max-width:1150px; margin:0 auto; padding:6px 18px 24px; color:var(--dim); font-size:13px; }
+  a { color:var(--blue); }
+  .safe { font-size:13px; color:var(--dim); margin-top:10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Terminal Quest</h1>
+  <div class="row" role="group" aria-label="Shell">
+    <button id="m-linux" type="button" aria-pressed="true">Linux (bash)</button>
+    <button id="m-ps" type="button" aria-pressed="false">Windows PowerShell</button>
+  </div>
+</header>
+<main>
+  <section class="panel" aria-label="Current level">
+    <div class="meta" id="lvl-meta">Level 1 of 12</div>
+    <div class="bar"><i id="bar"></i></div>
+    <h2 id="lvl-title"></h2>
+    <p id="lvl-story"></p>
+    <div class="task" id="lvl-task"></div>
+    <div class="row">
+      <button id="b-hint" type="button">Hint</button>
+      <button id="b-reset" type="button" title="Rebuild the world as it was at the start of this level">Reset this level</button>
+      <button id="b-restart" type="button" title="Start again from level 1">Restart game</button>
+    </div>
+    <p class="safe">Everything runs in your browser on a pretend file system. Your real files are never touched. Type <code>help</code> to list commands, <code>hint</code> for a nudge. Up/Down recalls history, Tab completes names.</p>
+  </section>
+  <section aria-label="Terminal">
+    <div id="term" role="log" aria-live="polite"></div>
+    <form id="form" autocomplete="off"><span id="prompt"></span><input id="cmd" aria-label="Command" spellcheck="false" autocapitalize="off" autocomplete="off" autofocus></form>
+  </section>
+</main>
+<footer>Free and open source (MIT). Source, tests and the paid tools that grow out of this: <a href="https://github.com/MegaStretch23/terminal-quest?utm_source=pages&amp;utm_medium=footer&amp;utm_campaign=terminal-quest">github.com/MegaStretch23/terminal-quest</a>.</footer>
+<script src="tq.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
