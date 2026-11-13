@@ -1,0 +1,214 @@
+Terminal Quest: transcript of the built-in solutions, played through shell.js + levels.js (no editing).
+
+=== Linux mode ===
+
+Level 1: Where am I?  (start in /home/player)
+Goal: Print your current folder.
+player@quest:~$ pwd
+/home/player
+-> level complete
+
+Level 2: Look around  (start in /home/player)
+Goal: List the files in the current folder.
+player@quest:~$ ls
+backup/
+docs/
+logs/
+notes/
+projects/
+readme.txt
+tmp/
+-> level complete
+
+Level 3: Read a file  (start in /home/player)
+Goal: Print the contents of readme.txt.
+player@quest:~$ cat readme.txt
+Welcome to Terminal Quest!
+You are in your home folder.
+Every level has a goal. Type hint for a nudge.
+-> level complete
+
+Level 4: Step into a folder  (start in /home/player)
+Goal: Change into the docs folder.
+player@quest:~$ cd docs
+-> level complete
+
+Level 5: Back out  (start in /home/player/docs/old)
+Goal: Be in /home/player.
+player@quest:~/docs/old$ cd ../..
+-> level complete
+
+Level 6: Hidden things  (start in /home/player)
+Goal: Read the hidden file .secret.
+player@quest:~$ ls -a
+.
+..
+.secret
+backup/
+docs/
+logs/
+notes/
+projects/
+readme.txt
+tmp/
+player@quest:~$ cat .secret
+the hidden word is: lantern
+-> level complete
+
+Level 7: Make a folder  (start in /home/player)
+Goal: Create a folder named stuff.
+player@quest:~$ mkdir stuff
+-> level complete
+
+Level 8: Make a file  (start in /home/player)
+Goal: Create projects/ideas.txt (empty).
+player@quest:~$ touch projects/ideas.txt
+-> level complete
+
+Level 9: Say it into a file  (start in /home/player)
+Goal: Create hello.txt containing the line: hello terminal
+player@quest:~$ echo "hello terminal" > hello.txt
+-> level complete
+
+Level 10: Make a copy  (start in /home/player)
+Goal: Copy docs/report.txt into backup/.
+player@quest:~$ cp docs/report.txt backup/
+-> level complete
+
+Level 11: Rename  (start in /home/player/docs)
+Goal: Rename draft.txt to plan.txt.
+player@quest:~/docs$ mv draft.txt plan.txt
+-> level complete
+
+Level 12: Find the errors  (start in /home/player)
+Goal: Create errors.txt with exactly the 3 ERROR lines of logs/app.log.
+player@quest:~$ grep ERROR logs/app.log > errors.txt
+-> level complete
+
+Level 13: Just the top  (start in /home/player)
+Goal: Create top.txt with the first 3 lines of logs/app.log.
+player@quest:~$ head -n 3 logs/app.log > top.txt
+-> level complete
+
+Level 14: Clean up  (start in /home/player)
+Goal: Delete every .tmp file in tmp/ but keep keep.txt.
+player@quest:~$ rm tmp/*.tmp
+-> level complete
+
+Level 15: Remove a folder  (start in /home/player)
+Goal: Remove docs/old.
+player@quest:~$ rm -r docs/old
+-> level complete
+
+Level 16: Mini project  (start in /home/player)
+Goal: site/index.txt contains "hello" and site/readme.txt is a copy of readme.txt.
+player@quest:~$ mkdir site
+player@quest:~$ echo hello > site/index.txt
+player@quest:~$ cp readme.txt site/
+-> level complete
+
+=== PowerShell mode ===
+
+Level 1: Where am I?  (start in /home/player)
+Goal: Print your current folder.
+PS /home/player> Get-Location
+/home/player
+-> level complete
+
+Level 2: Look around  (start in /home/player)
+Goal: List the files in the current folder.
+PS /home/player> Get-ChildItem
+backup/
+docs/
+logs/
+notes/
+projects/
+readme.txt
+tmp/
+-> level complete
+
+Level 3: Read a file  (start in /home/player)
+Goal: Print the contents of readme.txt.
+PS /home/player> Get-Content readme.txt
+Welcome to Terminal Quest!
+You are in your home folder.
+Every level has a goal. Type hint for a nudge.
+-> level complete
+
+Level 4: Step into a folder  (start in /home/player)
+Goal: Change into the docs folder.
+PS /home/player> Set-Location docs
+-> level complete
+
+Level 5: Back out  (start in /home/player/docs/old)
+Goal: Be in /home/player.
+PS /home/player/docs/old> Set-Location ../..
+-> level complete
+
+Level 6: Hidden things  (start in /home/player)
+Goal: Read the hidden file .secret.
+PS /home/player> Get-ChildItem -Force
+.secret
+backup/
+docs/
+logs/
+notes/
+projects/
+readme.txt
+tmp/
+PS /home/player> Get-Content .secret
+the hidden word is: lantern
+-> level complete
+
+Level 7: Make a folder  (start in /home/player)
+Goal: Create a folder named stuff.
+PS /home/player> New-Item -ItemType Directory -Path stuff
+-> level complete
+
+Level 8: Make a file  (start in /home/player)
+Goal: Create projects/ideas.txt (empty).
+PS /home/player> New-Item -ItemType File -Path projects/ideas.txt
+-> level complete
+
+Level 9: Say it into a file  (start in /home/player)
+Goal: Create hello.txt containing the line: hello terminal
+PS /home/player> Write-Output "hello terminal" > hello.txt
+-> level complete
+
+Level 10: Make a copy  (start in /home/player)
+Goal: Copy docs/report.txt into backup/.
+PS /home/player> Copy-Item docs/report.txt backup/
+-> level complete
+
+Level 11: Rename  (start in /home/player/docs)
+Goal: Rename draft.txt to plan.txt.
+PS /home/player/docs> Move-Item draft.txt plan.txt
+-> level complete
+
+Level 12: Find the errors  (start in /home/player)
+Goal: Create errors.txt with exactly the 3 ERROR lines of logs/app.log.
+PS /home/player> Get-Content logs/app.log | Select-String -CaseSensitive ERROR > errors.txt
+-> level complete
+
+Level 13: Just the top  (start in /home/player)
+Goal: Create top.txt with the first 3 lines of logs/app.log.
+PS /home/player> Get-Content logs/app.log -TotalCount 3 > top.txt
+-> level complete
+
+Level 14: Clean up  (start in /home/player)
+Goal: Delete every .tmp file in tmp/ but keep keep.txt.
+PS /home/player> Remove-Item tmp/*.tmp
+-> level complete
+
+Level 15: Remove a folder  (start in /home/player)
+Goal: Remove docs/old.
+PS /home/player> Remove-Item docs/old -Recurse
+-> level complete
+
+Level 16: Mini project  (start in /home/player)
+Goal: site/index.txt contains "hello" and site/readme.txt is a copy of readme.txt.
+PS /home/player> mkdir site
+PS /home/player> Write-Output hello > site/index.txt
+PS /home/player> Copy-Item readme.txt site/
+-> level complete
+

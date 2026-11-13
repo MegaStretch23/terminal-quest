@@ -1,0 +1,8 @@
+{
+  "name": "terminal-quest",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser game that teaches basic Linux and PowerShell file commands in a simulated shell",
+  "license": "MIT",
+  "scripts": { "test": "node --test tests/" }
+}

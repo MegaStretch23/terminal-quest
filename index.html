@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terminal Quest: learn Linux and PowerShell file commands in your browser</title>
+<meta name="description" content="A free browser game with 16 short levels. Practise ls, cd, cat, grep, mkdir, cp, mv, rm and more in a simulated shell, in Linux style, PowerShell style, or side by side. Runs in your tab.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Terminal Quest</h1>
+  <p class="tag">16 short levels for the basic file commands, in a simulated shell. Linux, PowerShell, or both side by side.</p>
+  <div class="bar">
+    <fieldset class="mode" aria-label="Shell mode">
+      <label><input type="radio" name="mode" value="linux"> Linux</label>
+      <label><input type="radio" name="mode" value="powershell"> PowerShell</label>
+      <label><input type="radio" name="mode" value="both" checked> Both side by side</label>
+    </fieldset>
+    <label>Level <select id="level" aria-label="Level"></select></label>
+    <span id="progress" class="muted"></span>
+    <button id="hintBtn" type="button">Hint</button>
+    <button id="resetLevel" type="button">Restart level</button>
+    <button id="resetAll" type="button">Reset progress</button>
+  </div>
+</header>
+<noscript><p class="warn">This game needs JavaScript. It runs entirely in your browser.</p></noscript>
+<main>
+  <aside id="quest" aria-live="polite">
+    <h2 id="qTitle"></h2>
+    <p id="qStory"></p>
+    <p class="goal"><b>Goal:</b> <span id="qGoal"></span></p>
+    <p id="qStatus" class="status" role="status"></p>
+    <ol id="qHints" class="hints"></ol>
+    <button id="nextBtn" type="button" hidden>Next level</button>
+  </aside>
+  <section id="panes">
+    <div class="pane" id="pane-linux" data-dialect="linux">
+      <div class="paneHead">Linux (bash-like)</div>
+      <div class="log" role="log" aria-live="polite" tabindex="0"></div>
+      <form class="cmd" autocomplete="off"><span class="prompt"></span><input type="text" spellcheck="false" autocapitalize="off" aria-label="Linux command"></form>
+    </div>
+    <div class="pane" id="pane-powershell" data-dialect="powershell">
+      <div class="paneHead">PowerShell</div>
+      <div class="log" role="log" aria-live="polite" tabindex="0"></div>
+      <form class="cmd" autocomplete="off"><span class="prompt"></span><input type="text" spellcheck="false" autocapitalize="off" aria-label="PowerShell command"></form>
+    </div>
+  </section>
+</main>
+<details class="sheet">
+  <summary>Command cheat sheet (the 12 commands this game simulates)</summary>
+  <table>
+    <thead><tr><th>Does</th><th>Linux</th><th>PowerShell</th></tr></thead>
+    <tbody id="sheetBody"></tbody>
+  </table>
+  <p class="muted">Also typed in either shell: <code>hint</code>, <code>help</code>, <code>clear</code>. Pipes (<code>|</code>) and one redirect at the end (<code>&gt;</code> or <code>&gt;&gt;</code>) work. Wildcards <code>*</code> and <code>?</code> work in file names.</p>
+</details>
+<footer>
+  <p>This is a teaching simulation, not a real shell: a small virtual filesystem, a subset of each command, simplified output. Nothing you type is sent anywhere, and the page has no analytics. Your progress is saved in your browser's localStorage under <code>terminal-quest-v1</code>.</p>
+  <p>Source: <a href="https://github.com/MegaStretch23/terminal-quest" rel="noopener">github.com/MegaStretch23/terminal-quest</a> (MIT).</p>
+</footer>
+<script src="shell.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
